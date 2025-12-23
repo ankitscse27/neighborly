@@ -1,5 +1,5 @@
 # neighborly
-Neighborly LKO This project helps people in Lucknow connect for urgent needs. Created by Ankit Singh.
+This project helps people in Lucknow connect for urgent needs. Created by Ankit Singh.
 # 🤝 Neighborly LKO | Community Help Platform
 
 **neighborly** is a hyper-local community assistance portal designed for the residents of **Lucknow (LKO), India**. It connects neighbors for urgent needs like Blood Donation, Tutoring, and Volunteering.
