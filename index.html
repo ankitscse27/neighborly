@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neighborly | LKO Community Help</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #064e3b;      /* Dark Green */
+            --blood: #ef4444;        /* Red */
+            --tutor: #3b82f6;        /* Blue */
+            --volunteer: #1e3a8a;    /* Dark Blue */
+            --bg: #f9fafb;
+            --text: #1f2937;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        body { background-color: var(--bg); color: var(--text); line-height: 1.6; }
+
+        nav {
+            background: white;
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo { font-size: 1.5rem; font-weight: 700; color: var(--primary); text-decoration: none; }
+        
+        .github-link {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            color: #333;
+            font-weight: 600;
+            background: #f3f4f6;
+            padding: 5px 12px;
+            border-radius: 20px;
+            transition: 0.3s;
+        }
+        .github-link:hover { background: #e5e7eb; color: var(--primary); }
+
+        .hero {
+            text-align: center;
+            padding: 4rem 10%;
+            background: linear-gradient(135deg, #064e3b 0%, #065f46 100%);
+            color: white;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: 350px 1fr;
+            gap: 2rem;
+            padding: 2rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .post-box {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            height: fit-content;
+            border: 1px solid #e5e7eb;
+        }
+
+        .form-group { margin-bottom: 1rem; }
+        label { display: block; margin-bottom: 0.5rem; font-weight: 600; font-size: 0.85rem; color: #4b5563; }
+        input, select, textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            font-size: 0.95rem;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 0.8rem;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .feed-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .filter-btns button {
+            padding: 0.5rem 1.2rem;
+            margin-left: 0.5rem;
+            border: 1px solid #d1d5db;
+            background: white;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+
+        .filter-btns button.active {
+            background: var(--primary);
+            color: white;
+        }
+
+        .card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.03);
+            border-left: 6px solid #ddd;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .card.blood { border-left-color: var(--blood); }
+        .card.tutoring { border-left-color: var(--tutor); }
+        .card.volunteering { border-left-color: var(--volunteer); }
+
+        .badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 6px;
+            font-size: 0.7rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            margin-bottom: 0.75rem;
+        }
+
+        .badge-blood { background: #fee2e2; color: var(--blood); }
+        .badge-tutor { background: #dbeafe; color: var(--tutor); }
+        .badge-vol { background: #dbeafe; color: var(--volunteer); }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 850px) {
+            .container { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="#" class="logo">Neighborly</a>
+        <div style="display: flex; align-items: center; gap: 20px;">
+            <div style="font-weight: 600; color: #666;">📍 Lucknow, India</div>
+            <a href="https://github.com/ankitscse27" target="_blank" class="github-link">
+                <i class="fab fa-github"></i> ankitscse27
+            </a>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <h1>Welcome, Ankit Singh!</h1>
+        <p>Connect with your neighbors in LKO. Request help or offer a hand today.</p>
+    </header>
+
+    <div class="container">
+        <aside class="post-box">
+            <h3>Create a Request</h3>
+            <br>
+            <form id="requestForm">
+                <div class="form-group">
+                    <label>Your Name</label>
+                    <input type="text" id="name" value="Ankit Singh" required>
+                </div>
+                <div class="form-group">
+                    <label>Category</label>
+                    <select id="category">
+                        <option value="blood">Blood Donation</option>
+                        <option value="tutoring">Tutoring</option>
+                        <option value="volunteering">Volunteering</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Location (Lucknow)</label>
+                    <input type="text" id="location" placeholder="e.g. Gomti Nagar" required>
+                </div>
+                <div class="form-group">
+                    <label>Message</label>
+                    <textarea id="desc" rows="4" placeholder="How can we help?" required></textarea>
+                </div>
+                <button type="submit" class="btn">Post to LKO Feed</button>
+            </form>
+        </aside>
+
+        <main>
+            <div class="feed-header">
+                <h2>Local Requests</h2>
+                <div class="filter-btns">
+                    <button class="active" onclick="filterFeed('all')">All</button>
+                    <button onclick="filterFeed('blood')">Blood</button>
+                    <button onclick="filterFeed('tutoring')">Tutoring</button>
+                    <button onclick="filterFeed('volunteering')">Volunteering</button>
+                </div>
+            </div>
+
+            <div id="feedList">
+                <div class="card volunteering" data-cat="volunteering">
+                    <span class="badge badge-vol">Volunteering</span>
+                    <h3>Help Needed: Park Clean-up</h3>
+                    <p>Cleaning Janeshwar Mishra Park this Sunday morning. Need 5 more people.</p>
+                    <small><b>By:</b> Rahul Verma | <b>Location:</b> Gomti Nagar, Lucknow</small>
+                </div>
+
+                <div class="card tutoring" data-cat="tutoring">
+                    <span class="badge badge-tutor">Tutoring</span>
+                    <h3>Java Programming Basics</h3>
+                    <p>Need someone to explain OOPS concepts for my college project.</p>
+                    <small><b>By:</b> Priya Sharma | <b>Location:</b> Aliganj, LKO</small>
+                </div>
+
+                <div class="card blood" data-cat="blood">
+                    <span class="badge badge-blood">Blood Donation</span>
+                    <h3>Urgent: B+ Required</h3>
+                    <p>Urgent requirement for B+ blood at KGMU Hospital.</p>
+                    <small><b>By:</b> Amit Dixit | <b>Location:</b> Chowk, LKO</small>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        const form = document.getElementById('requestForm');
+        const feedList = document.getElementById('feedList');
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('name').value;
+            const cat = document.getElementById('category').value;
+            const location = document.getElementById('location').value;
+            const desc = document.getElementById('desc').value;
+
+            const card = document.createElement('div');
+            card.className = `card ${cat}`;
+            card.setAttribute('data-cat', cat);
+
+            const badgeLabel = cat === 'blood' ? 'Blood Donation' : (cat === 'tutoring' ? 'Tutoring' : 'Volunteering');
+            const badgeClass = cat === 'blood' ? 'badge-blood' : (cat === 'tutoring' ? 'badge-tutor' : 'badge-vol');
+
+            card.innerHTML = `
+                <span class="badge ${badgeClass}">${badgeLabel}</span>
+                <h3>${desc.substring(0, 40)}...</h3>
+                <p>${desc}</p>
+                <small><b>By:</b> ${name} | <b>Location:</b> ${location}, LKO</small>
+            `;
+
+            feedList.insertBefore(card, feedList.firstChild);
+            form.reset();
+            document.getElementById('name').value = "Ankit Singh";
+        });
+
+        function filterFeed(category) {
+            const cards = document.querySelectorAll('.card');
+            const btns = document.querySelectorAll('.filter-btns button');
+            btns.forEach(btn => {
+                btn.classList.remove('active');
+                if(btn.innerText.toLowerCase() === category || (category === 'all' && btn.innerText === 'All')) btn.classList.add('active');
+            });
+            cards.forEach(card => {
+                card.style.display = (category === 'all' || card.getAttribute('data-cat') === category) ? 'block' : 'none';
+            });
+        }
+    </script>
+</body>
+</html>
+<footer style="text-align: center; padding: 2rem; color: #666; font-size: 0.8rem;">
+    &copy; 2025 Neighborly LKO. Designed & Developed by <a href="https://github.com/ankitscse27" style="color: var(--primary);">Ankit Singh</a>.
+</footer>
